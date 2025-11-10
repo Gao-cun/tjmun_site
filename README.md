@@ -126,7 +126,6 @@ npx tsx scripts/set-admin.ts <邮箱地址>
 或者使用 SQL 直接更新：
 =======
 2. 在数据库中手动将该用户的 `role` 字段更新为 `ADMIN`：
->>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
 
 ```sql
 UPDATE users SET role = 'ADMIN' WHERE email = 'your-admin@email.com';
