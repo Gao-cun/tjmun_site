@@ -5,9 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+<<<<<<< HEAD
 // 强制动态渲染，确保数据实时更新
 export const dynamic = 'force-dynamic'
 
+=======
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
 async function getConferences() {
   const conferences = await prisma.conference.findMany({
     orderBy: { startDate: "desc" },
@@ -75,7 +78,11 @@ export default async function ConferencesPage() {
                         <Badge variant="outline">需要测试</Badge>
                       )}
                     </div>
+<<<<<<< HEAD
                     {conference.fee.toNumber() > 0 && (
+=======
+                    {conference.fee > 0 && (
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
                       <span className="text-sm font-semibold text-gray-700">
                         ¥{conference.fee.toString()}
                       </span>

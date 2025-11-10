@@ -1,6 +1,10 @@
 "use client"
 
+<<<<<<< HEAD
 import { useState, useEffect, Suspense } from "react"
+=======
+import { useState, useEffect } from "react"
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { signIn } from "next-auth/react"
@@ -9,7 +13,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+<<<<<<< HEAD
 function LoginForm() {
+=======
+export default function LoginPage() {
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
   const router = useRouter()
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
@@ -133,6 +141,7 @@ function LoginForm() {
   )
 }
 
+<<<<<<< HEAD
 export default function LoginPage() {
   return (
     <Suspense fallback={
@@ -155,3 +164,5 @@ export default function LoginPage() {
   )
 }
 
+=======
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999

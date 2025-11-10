@@ -61,7 +61,11 @@ export default async function AdminConferencesPage() {
                   {conference.testRequired && (
                     <Badge variant="outline">需要测试</Badge>
                   )}
+<<<<<<< HEAD
                   {conference.fee.toNumber() > 0 && (
+=======
+                  {conference.fee > 0 && (
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
                     <Badge variant="outline">¥{conference.fee.toString()}</Badge>
                   )}
                 </div>

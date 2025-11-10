@@ -2,9 +2,12 @@
   "name": "tjmun-website",
   "version": "1.0.0",
   "private": true,
+<<<<<<< HEAD
   "eslint": {
     "ignoreDuringBuilds": true
   },
+=======
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
   "scripts": {
     "dev": "next dev",
     "build": "next build",

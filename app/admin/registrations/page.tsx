@@ -147,7 +147,11 @@ export default async function AdminRegistrationsPage({
                             </a>
                           </p>
                         )}
+<<<<<<< HEAD
                         {registration.conference.fee.toNumber() > 0 && (
+=======
+                        {registration.conference.fee > 0 && (
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
                           <p>
                             <span className="font-medium">会议费用：</span>
                             ¥{registration.conference.fee.toString()}

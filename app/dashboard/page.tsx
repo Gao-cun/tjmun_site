@@ -213,7 +213,11 @@ export default async function DashboardPage() {
                             测试成绩：{registration.testScore} 分
                           </p>
                         )}
+<<<<<<< HEAD
                         {registration.conference.fee.toNumber() > 0 && (
+=======
+                        {registration.conference.fee > 0 && (
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
                           <p className="text-sm font-medium text-gray-700">
                             费用：¥{registration.conference.fee.toString()}
                           </p>
