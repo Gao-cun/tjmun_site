@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft } from "lucide-react"
 
+// 强制动态渲染，确保数据实时更新
+export const dynamic = 'force-dynamic'
+
 async function getAnnouncement(id: string) {
   const announcement = await prisma.announcement.findUnique({
     where: { id },

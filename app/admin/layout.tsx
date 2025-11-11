@@ -61,6 +61,12 @@ export default async function AdminLayout({
                 >
                   网站设置
                 </Link>
+                <Link
+                  href="/admin/seat-assignments"
+                  className="text-sm font-medium text-gray-700 hover:text-gray-900"
+                >
+                  席位分配
+                </Link>
               </nav>
             </div>
             <div className="flex items-center gap-4">

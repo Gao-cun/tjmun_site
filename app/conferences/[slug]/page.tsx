@@ -11,6 +11,9 @@ import { RegisterButton } from "@/components/register-button"
 import { FileUploadForm } from "@/components/file-upload-form"
 import { ArrowLeft } from "lucide-react"
 
+// 强制动态渲染，确保数据实时更新
+export const dynamic = 'force-dynamic'
+
 async function getConference(slug: string) {
   const conference = await prisma.conference.findUnique({
     where: { slug },
@@ -95,7 +98,7 @@ export default async function ConferenceDetailPage({
                 {conference.testRequired && (
                   <Badge variant="outline">需要学术测试</Badge>
                 )}
-                {conference.fee > 0 && (
+                {conference.fee.toNumber() > 0 && (
                   <Badge variant="outline">费用：¥{conference.fee.toString()}</Badge>
                 )}
               </div>
@@ -174,7 +177,7 @@ export default async function ConferenceDetailPage({
                         : "未支付"}
                     </Badge>
                   </div>
-                  {conference.fee > 0 && userRegistration.paymentStatus === "UNPAID" && (
+                  {conference.fee.toNumber() > 0 && userRegistration.paymentStatus === "UNPAID" && (
                     <div className="mt-3 p-3 bg-yellow-50 rounded border border-yellow-200">
                       <p className="text-sm text-yellow-800 mb-2">
                         会议费用：¥{conference.fee.toString()}

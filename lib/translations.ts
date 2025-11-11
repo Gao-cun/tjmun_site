@@ -1,0 +1,63 @@
+export type Language = "zh" | "en"
+
+export const translations = {
+  zh: {
+    siteName: "同济大学模拟联合国社团",
+    siteNameShort: "同济大学模联",
+    tagline: "培养全球视野，提升领导力，体验外交魅力",
+    announcements: "公告",
+    conferences: "会议",
+    contact: "联系我们",
+    seatQuery: "席位查询",
+    login: "登录",
+    register: "注册",
+    dashboard: "个人中心",
+    admin: "管理后台",
+    logout: "退出登录",
+    viewAll: "查看全部",
+    latestAnnouncements: "最新公告",
+    upcomingConferences: "近期会议",
+    viewDetails: "查看详情",
+    readMore: "阅读更多",
+    registrationOpen: "报名中",
+    registrationUpcoming: "即将开始",
+    registrationClosed: "已结束",
+    countdownTitle: "距离大会开始还有",
+    days: "天",
+    hours: "小时",
+    minutes: "分钟",
+    seconds: "秒",
+  },
+  en: {
+    siteName: "Tongji University Model United Nations",
+    siteNameShort: "TJMUN",
+    tagline: "Cultivate Global Vision, Enhance Leadership, Experience Diplomatic Charm",
+    announcements: "Announcements",
+    conferences: "Conferences",
+    contact: "Contact",
+    seatQuery: "Seat Query",
+    login: "Login",
+    register: "Register",
+    dashboard: "Dashboard",
+    admin: "Admin",
+    logout: "Logout",
+    viewAll: "View All",
+    latestAnnouncements: "Latest Announcements",
+    upcomingConferences: "Upcoming Conferences",
+    viewDetails: "View Details",
+    readMore: "Read More",
+    registrationOpen: "Open",
+    registrationUpcoming: "Upcoming",
+    registrationClosed: "Closed",
+    countdownTitle: "Time until conference starts",
+    days: "days",
+    hours: "hours",
+    minutes: "minutes",
+    seconds: "seconds",
+  },
+} as const
+
+export function getTranslation(lang: Language, key: keyof typeof translations.zh): string {
+  return translations[lang][key] || translations.zh[key]
+}
+

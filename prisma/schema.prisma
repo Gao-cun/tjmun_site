@@ -118,6 +118,22 @@ model SiteConfig {
   @@map("site_configs")
 }
 
+// 6. 席位分配模型 (用于查询功能)
+model SeatAssignment {
+  id          String   @id @default(cuid())
+  serialNumber Int?    @map("serial_number")
+  name        String
+  phone       String
+  venue       String
+  seat        String
+  qqGroup     String   @map("qq_group")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([name, phone])
+  @@map("seat_assignments")
+}
+
 // NextAuth.js 所需的标准模型
 model Account {
   id                String  @id @default(cuid())

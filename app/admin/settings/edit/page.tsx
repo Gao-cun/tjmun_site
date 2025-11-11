@@ -5,7 +5,7 @@ async function getSiteConfigs() {
   const configs = await prisma.siteConfig.findMany({
     where: {
       key: {
-        in: ["contact_email", "contact_phone", "contact_address", "contact_wechat"],
+        in: ["contact_email", "contact_phone", "contact_address", "contact_wechat", "countdown_target"],
       },
     },
   })
@@ -25,6 +25,7 @@ export default async function EditSettingsPage() {
     contact_phone: configMap["contact_phone"] || "",
     contact_address: configMap["contact_address"] || "",
     contact_wechat: configMap["contact_wechat"] || "",
+    countdown_target: configMap["countdown_target"] || "",
   }
 
   return (

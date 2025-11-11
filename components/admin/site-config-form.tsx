@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,6 +12,7 @@ interface SiteConfigFormData {
   contact_phone: string
   contact_address: string
   contact_wechat: string
+  countdown_target: string
 }
 
 interface SiteConfigFormProps {
@@ -27,7 +28,40 @@ export function SiteConfigForm({ initialData }: SiteConfigFormProps) {
     contact_phone: initialData?.contact_phone || "",
     contact_address: initialData?.contact_address || "",
     contact_wechat: initialData?.contact_wechat || "",
+    countdown_target: initialData?.countdown_target || "",
   })
+
+  // 将日期时间字符串转换为本地日期时间输入格式 (YYYY-MM-DDTHH:mm)
+  const getDateTimeLocalValue = (dateString: string) => {
+    if (!dateString) return ""
+    try {
+      const date = new Date(dateString)
+      if (isNaN(date.getTime())) return ""
+      // 转换为本地时间并格式化为 YYYY-MM-DDTHH:mm
+      const year = date.getFullYear()
+      const month = String(date.getMonth() + 1).padStart(2, "0")
+      const day = String(date.getDate()).padStart(2, "0")
+      const hours = String(date.getHours()).padStart(2, "0")
+      const minutes = String(date.getMinutes()).padStart(2, "0")
+      return `${year}-${month}-${day}T${hours}:${minutes}`
+    } catch {
+      return ""
+    }
+  }
+
+  const [countdownDateTime, setCountdownDateTime] = useState(() => {
+    if (initialData?.countdown_target) {
+      return getDateTimeLocalValue(initialData.countdown_target)
+    }
+    return ""
+  })
+
+  // 当initialData变化时更新countdownDateTime
+  React.useEffect(() => {
+    if (initialData?.countdown_target) {
+      setCountdownDateTime(getDateTimeLocalValue(initialData.countdown_target))
+    }
+  }, [initialData?.countdown_target])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -119,6 +153,31 @@ export function SiteConfigForm({ initialData }: SiteConfigFormProps) {
               }
               placeholder="TJMUN_Official"
             />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="countdown_target">倒计时目标时间</Label>
+            <Input
+              id="countdown_target"
+              type="datetime-local"
+              value={countdownDateTime}
+              onChange={(e) => {
+                setCountdownDateTime(e.target.value)
+                // 将本地时间转换为ISO字符串
+                if (e.target.value) {
+                  const localDate = new Date(e.target.value)
+                  setFormData({
+                    ...formData,
+                    countdown_target: localDate.toISOString(),
+                  })
+                } else {
+                  setFormData({ ...formData, countdown_target: "" })
+                }
+              }}
+            />
+            <p className="text-sm text-gray-500">
+              设置主页倒计时的目标时间（精确到分钟），留空则不显示倒计时
+            </p>
           </div>
 
           <div className="flex gap-4">

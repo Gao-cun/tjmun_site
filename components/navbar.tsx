@@ -10,9 +10,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { useLanguage } from "@/components/language-provider"
+import { getTranslation } from "@/lib/translations"
 
 export function Navbar() {
   const { data: session } = useSession()
+  const { language } = useLanguage()
 
   return (
     <nav className="border-b bg-white">
@@ -20,30 +24,34 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="text-xl font-bold text-gray-900">
-              同济大学模联
+              {getTranslation(language, "siteNameShort")}
             </Link>
             <div className="hidden md:flex gap-6">
               <Link href="/announcements" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-                公告
+                {getTranslation(language, "announcements")}
               </Link>
               <Link href="/conferences" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-                会议
+                {getTranslation(language, "conferences")}
               </Link>
               <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-                联系我们
+                {getTranslation(language, "contact")}
+              </Link>
+              <Link href="/seat-query" className="text-sm font-medium text-gray-700 hover:text-gray-900">
+                {getTranslation(language, "seatQuery")}
               </Link>
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             {session ? (
               <>
                 {session.user.role === "ADMIN" && (
                   <Button asChild variant="outline" size="sm">
-                    <Link href="/admin">管理后台</Link>
+                    <Link href="/admin">{getTranslation(language, "admin")}</Link>
                   </Button>
                 )}
                 <Button asChild variant="outline" size="sm">
-                  <Link href="/dashboard">个人中心</Link>
+                  <Link href="/dashboard">{getTranslation(language, "dashboard")}</Link>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -53,16 +61,16 @@ export function Navbar() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem asChild>
-                      <Link href="/dashboard">个人中心</Link>
+                      <Link href="/dashboard">{getTranslation(language, "dashboard")}</Link>
                     </DropdownMenuItem>
                     {session.user.role === "ADMIN" && (
                       <DropdownMenuItem asChild>
-                        <Link href="/admin">管理后台</Link>
+                        <Link href="/admin">{getTranslation(language, "admin")}</Link>
                       </DropdownMenuItem>
                     )}
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => signOut()}>
-                      退出登录
+                      {getTranslation(language, "logout")}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -70,10 +78,10 @@ export function Navbar() {
             ) : (
               <>
                 <Button asChild variant="ghost" size="sm">
-                  <Link href="/login">登录</Link>
+                  <Link href="/login">{getTranslation(language, "login")}</Link>
                 </Button>
                 <Button asChild size="sm">
-                  <Link href="/register">注册</Link>
+                  <Link href="/register">{getTranslation(language, "register")}</Link>
                 </Button>
               </>
             )}

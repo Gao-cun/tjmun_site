@@ -55,6 +55,14 @@ export default async function AdminSettingsPage() {
                 {configMap["contact_wechat"] || "未设置"}
               </p>
             </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">倒计时目标时间</label>
+              <p className="mt-1 text-lg">
+                {configMap["countdown_target"] 
+                  ? new Date(configMap["countdown_target"]).toLocaleString("zh-CN")
+                  : "未设置"}
+              </p>
+            </div>
             <Button asChild className="mt-4">
               <a href="/admin/settings/edit">编辑设置</a>
             </Button>

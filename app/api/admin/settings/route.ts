@@ -9,14 +9,16 @@ const settingsSchema = z.object({
   contact_phone: z.string().optional().or(z.literal("")),
   contact_address: z.string().optional().or(z.literal("")),
   contact_wechat: z.string().optional().or(z.literal("")),
+  countdown_target: z.string().optional().or(z.literal("")),
 })
 
-const configKeys = ["contact_email", "contact_phone", "contact_address", "contact_wechat"]
+const configKeys = ["contact_email", "contact_phone", "contact_address", "contact_wechat", "countdown_target"]
 const configLabels: Record<string, string> = {
   contact_email: "联系邮箱",
   contact_phone: "联系电话",
   contact_address: "联系地址",
   contact_wechat: "微信公众号",
+  countdown_target: "倒计时目标时间",
 }
 
 export async function PUT(request: NextRequest) {

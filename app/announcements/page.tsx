@@ -4,6 +4,9 @@ import { formatDate } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+// 强制动态渲染，确保数据实时更新
+export const dynamic = 'force-dynamic'
+
 async function getAnnouncements() {
   const announcements = await prisma.announcement.findMany({
     where: { status: "PUBLISHED" },
