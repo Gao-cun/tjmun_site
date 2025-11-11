@@ -4,6 +4,12 @@ import { HomeContent } from "@/components/home-content"
 // 强制动态渲染，确保数据实时更新
 export const dynamic = 'force-dynamic'
 
+<<<<<<< HEAD
+// 强制动态渲染，确保数据实时更新
+export const dynamic = 'force-dynamic'
+
+=======
+>>>>>>> 5edc018894a634715c39e6a190c13ee7937c8999
 async function getLatestAnnouncements() {
   const announcements = await prisma.announcement.findMany({
     where: { status: "PUBLISHED" },
