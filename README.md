@@ -115,13 +115,16 @@ npm run dev
 首次运行后，建议创建初始管理员账号：
 
 1. 通过注册页面创建一个账号
-<<<<<<< HEAD
 2. 使用脚本将该用户设置为管理员（推荐）：
 
 ```bash
 npx tsx scripts/set-admin.ts your-email@example.com
 ```
+更常用的
+、、、bash
 npx tsx scripts/set-admin.ts <邮箱地址>
+、、、
+
 
 或者使用 SQL 直接更新：
 =======
