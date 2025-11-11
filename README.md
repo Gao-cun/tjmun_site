@@ -121,9 +121,9 @@ npm run dev
 npx tsx scripts/set-admin.ts your-email@example.com
 ```
 更常用的
-、、、bash
+```bash
 npx tsx scripts/set-admin.ts <邮箱地址>
-、、、
+```
 
 
 或者使用 SQL 直接更新：
